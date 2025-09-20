@@ -47,38 +47,30 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {data?.length === 0 ? (
-            <tr>
-              <td colSpan={4} style={{ textAlign: "center" }}>
-                Loading...
+          {data.map((user) => (
+            <tr key={user.id}>
+              <td>{user.name}</td>
+              <td>{user.number}</td>
+              <td>{user.email}</td>
+              <td className="buttons">
+                <button onClick={() => deleteUser(user.id)}>
+                  <Trash />
+                </button>
+                <button
+                  onClick={() => {
+                    setUser(user);
+                    setActive(true);
+                    toggle();
+                  }}
+                >
+                  <Edit />
+                </button>
+                <button>
+                  <Eye />
+                </button>
               </td>
             </tr>
-          ) : (
-            data.map((user) => (
-              <tr key={user.id}>
-                <td>{user.name}</td>
-                <td>{user.number}</td>
-                <td>{user.email}</td>
-                <td className="buttons">
-                  <button onClick={() => deleteUser(user.id)}>
-                    <Trash />
-                  </button>
-                  <button
-                    onClick={() => {
-                      setUser(user);
-                      setActive(true);
-                      toggle();
-                    }}
-                  >
-                    <Edit />
-                  </button>
-                  <button>
-                    <Eye />
-                  </button>
-                </td>
-              </tr>
-            ))
-          )}
+          ))}
         </tbody>
       </table>
       {active && (
