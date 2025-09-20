@@ -13,22 +13,22 @@ export const getUsers = async () => {
 };
 
 export const deleteUsers = async (id) => {
-  const deleted = await api.delete(id);
+  const deleted = await api.delete(`/${id}`);
   return deleted;
 };
 
 export const editUsers = async (id, updatedUser) => {
   try {
-    const res = await api.put(`${baseUrl}/${id}`, updatedUser);
+    const res = await api.put(`/${id}`, updatedUser);
     return res.data;
   } catch (error) {
     console.log(error.message);
   }
 };
 
-export const addUsers = async (addUser) => {
+export const addUsers = async (newUser) => {
   try {
-    const res = await api.post(baseUrl, addUser);
+    const res = await api.post("", newUser);
     return res.data;
   } catch (error) {
     console.log(error.message);
