@@ -9,7 +9,7 @@ const api = axios.create({
 
 export const getUsers = async () => {
   const data = await api.get("");
-  return data;
+  return data.data;
 };
 
 export const deleteUsers = async (id) => {
