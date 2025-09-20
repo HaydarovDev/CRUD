@@ -17,6 +17,7 @@ const App = () => {
   const getData = async () => {
     const data = await getUsers();
     setData(data);
+    console.log(data);
   };
 
   const toggle = () => {
@@ -57,7 +58,7 @@ const App = () => {
           ) : (
             <AnimatePresence>
               {data &&
-                data?.map((user) => (
+                data.map((user) => (
                   <motion.tr
                     key={user.id}
                     initial={{ opacity: 0, y: -20 }}
