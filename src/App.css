@@ -1,0 +1,42 @@
+table {
+  table-layout: fixed;
+  width: 100%;
+  font-family: sans-serif;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+table thead th,
+td {
+  padding: 10px;
+  flex: 1;
+}
+
+table thead th:nth-child(4) {
+  width: 150px;
+}
+
+.adduser {
+  background: black;
+  color: white;
+  padding: 8px;
+  margin-block: 8px;
+  cursor: pointer;
+  border-radius: 3px;
+  border: none;
+}
+
+table tbody td.buttons {
+  display: flex;
+  border-collapse: collapse;
+  justify-content: center;
+  gap: 10px;
+}
+
+table tbody td button {
+  background: #f1f1f1;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+}

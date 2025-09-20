@@ -1,0 +1,17 @@
+.form {
+    width: 100%;
+    min-height: 100vh;
+    position: fixed;
+    background: rgba(211, 211, 211, 0.5);
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form form {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+}
