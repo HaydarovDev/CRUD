@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const baseUrl = import.meta.env.VITE_CRUD_URL;
-const baseUrl = "https://67ee2671c11d5ff4bf788157.mockapi.io/crud";
+const baseUrl = import.meta.env.VITE_CRUD_URL;
+// const baseUrl = "https://67ee2671c11d5ff4bf788157.mockapi.io/crud";
 
 const api = axios.create({
   baseURL: baseUrl,
@@ -9,7 +9,7 @@ const api = axios.create({
 });
 
 export const getUsers = async () => {
-  const data = await api.get("");
+  const data = await api.get("/crud");
   return data?.data;
 };
 
