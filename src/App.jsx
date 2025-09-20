@@ -16,6 +16,7 @@ const App = () => {
   const getData = async () => {
     const data = await getUsers();
     setData(data);
+    console.log(data);
   };
 
   const toggle = () => {
