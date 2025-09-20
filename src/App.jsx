@@ -56,36 +56,37 @@ const App = () => {
             </tr>
           ) : (
             <AnimatePresence>
-              {data.map((user) => (
-                <motion.tr
-                  key={user.id}
-                  initial={{ opacity: 0, y: -20 }} // qo‘shilganda
-                  animate={{ opacity: 1, y: 0 }} // odatdagi holat
-                  exit={{ opacity: 0, x: 20 }} // delete qilinganda chiqish
-                  transition={{ duration: 0.3 }}
-                >
-                  <td>{user.name}</td>
-                  <td>{user.number}</td>
-                  <td>{user.email}</td>
-                  <td className="buttons">
-                    <button onClick={() => deleteUser(user.id)}>
-                      <Trash />
-                    </button>
-                    <button
-                      onClick={() => {
-                        setUser(user);
-                        setActive(true);
-                        toggle();
-                      }}
-                    >
-                      <Edit />
-                    </button>
-                    <button>
-                      <Eye />
-                    </button>
-                  </td>
-                </motion.tr>
-              ))}
+              {data &&
+                data.map((user) => (
+                  <motion.tr
+                    key={user.id}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <td>{user.name}</td>
+                    <td>{user.number}</td>
+                    <td>{user.email}</td>
+                    <td className="buttons">
+                      <button onClick={() => deleteUser(user.id)}>
+                        <Trash />
+                      </button>
+                      <button
+                        onClick={() => {
+                          setUser(user);
+                          setActive(true);
+                          toggle();
+                        }}
+                      >
+                        <Edit />
+                      </button>
+                      <button>
+                        <Eye />
+                      </button>
+                    </td>
+                  </motion.tr>
+                ))}
             </AnimatePresence>
           )}
         </tbody>
