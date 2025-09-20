@@ -6,6 +6,7 @@ import Edit from "./assets/imageIcon/Edit";
 import Eye from "./assets/imageIcon/Eye";
 import EditUser from "./components/EditUser/EditUser";
 import AddUser from "./components/AddUser/AddUser";
+import { motion, AnimatePresence } from "framer-motion";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -13,11 +14,8 @@ const App = () => {
   const [user, setUser] = useState([]);
   const [addUser, setAddUser] = useState(false);
 
-  console.log(data);
-
   const getData = async () => {
     const data = await getUsers();
-    console.log(data);
     setData(data.data);
   };
 
@@ -53,13 +51,19 @@ const App = () => {
           {data.length === 0 ? (
             <tr>
               <td colSpan={4} style={{ textAlign: "center" }}>
-                Loading
+                Loading...
               </td>
             </tr>
           ) : (
-            data.map((user) => {
-              return (
-                <tr key={user.id}>
+            <AnimatePresence>
+              {data.map((user) => (
+                <motion.tr
+                  key={user.id}
+                  initial={{ opacity: 0, y: -20 }} // qo‘shilganda
+                  animate={{ opacity: 1, y: 0 }} // odatdagi holat
+                  exit={{ opacity: 0, x: 20 }} // delete qilinganda chiqish
+                  transition={{ duration: 0.3 }}
+                >
                   <td>{user.name}</td>
                   <td>{user.number}</td>
                   <td>{user.email}</td>
@@ -71,7 +75,7 @@ const App = () => {
                       onClick={() => {
                         setUser(user);
                         setActive(true);
-                        toggle;
+                        toggle();
                       }}
                     >
                       <Edit />
@@ -80,9 +84,9 @@ const App = () => {
                       <Eye />
                     </button>
                   </td>
-                </tr>
-              );
-            })
+                </motion.tr>
+              ))}
+            </AnimatePresence>
           )}
         </tbody>
       </table>

@@ -40,3 +40,13 @@ table tbody td button {
   border-radius: 5px;
   display: flex;
 }
+
+@media screen and (max-width: 911px) {
+  .users-table {
+    width: 100% !important;
+  }
+
+  table {
+    width: 100% !important;
+  }
+}
