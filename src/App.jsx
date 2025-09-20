@@ -6,7 +6,6 @@ import Edit from "./assets/imageIcon/Edit";
 import Eye from "./assets/imageIcon/Eye";
 import EditUser from "./components/EditUser/EditUser";
 import AddUser from "./components/AddUser/AddUser";
-import { motion, AnimatePresence } from "framer-motion";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -48,47 +47,31 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {data?.length === 0 ? (
-            <tr>
-              <td colSpan={4} style={{ textAlign: "center" }}>
-                Loading...
-              </td>
-            </tr>
-          ) : (
-            <AnimatePresence>
-              {data &&
-                data.map((user) => (
-                  <motion.tr
-                    key={user.id}
-                    initial={{ opacity: 0, y: -20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, x: 20 }}
-                    transition={{ duration: 0.3 }}
+          {data &&
+            data.map((user) => (
+              <tr key={user.id}>
+                <td>{user.name}</td>
+                <td>{user.number}</td>
+                <td>{user.email}</td>
+                <td className="buttons">
+                  <button onClick={() => deleteUser(user.id)}>
+                    <Trash />
+                  </button>
+                  <button
+                    onClick={() => {
+                      setUser(user);
+                      setActive(true);
+                      toggle;
+                    }}
                   >
-                    <td>{user.name}</td>
-                    <td>{user.number}</td>
-                    <td>{user.email}</td>
-                    <td className="buttons">
-                      <button onClick={() => deleteUser(user.id)}>
-                        <Trash />
-                      </button>
-                      <button
-                        onClick={() => {
-                          setUser(user);
-                          setActive(true);
-                          toggle();
-                        }}
-                      >
-                        <Edit />
-                      </button>
-                      <button>
-                        <Eye />
-                      </button>
-                    </td>
-                  </motion.tr>
-                ))}
-            </AnimatePresence>
-          )}
+                    <Edit />
+                  </button>
+                  <button>
+                    <Eye />
+                  </button>
+                </td>
+              </tr>
+            ))}
         </tbody>
       </table>
       {active && (
