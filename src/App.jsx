@@ -48,7 +48,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {data.length === 0 ? (
+          {data?.length === 0 ? (
             <tr>
               <td colSpan={4} style={{ textAlign: "center" }}>
                 Loading...
@@ -57,7 +57,7 @@ const App = () => {
           ) : (
             <AnimatePresence>
               {data &&
-                data.map((user) => (
+                data?.map((user) => (
                   <motion.tr
                     key={user.id}
                     initial={{ opacity: 0, y: -20 }}
