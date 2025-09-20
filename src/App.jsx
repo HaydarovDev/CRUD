@@ -10,7 +10,7 @@ import AddUser from "./components/AddUser/AddUser";
 const App = () => {
   const [data, setData] = useState([]);
   const [active, setActive] = useState(false);
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState({});
   const [addUser, setAddUser] = useState(false);
 
   const getData = async () => {
