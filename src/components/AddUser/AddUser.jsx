@@ -8,12 +8,23 @@ const AddUser = ({ setAddUser, setData }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const nameValue = name.current.value.trim();
+    const numberValue = number.current.value.trim();
+    const emailValue = email.current.value.trim();
+
     const postedUser = {
       id: Date.now(),
-      name: name.current.value,
-      number: number.current.value,
-      email: email.current.value,
+      name: nameValue,
+      number: numberValue,
+      email: emailValue,
     };
+
+    if (!nameValue || !numberValue || !emailValue) {
+      alert("Please do not enter space");
+      return;
+    }
+
     console.log(postedUser);
 
     setData((prev) => [...prev, { ...postedUser }]);
@@ -55,9 +66,9 @@ const AddUser = ({ setAddUser, setData }) => {
           onSubmit={(e) => handleSubmit(e)}
           onClick={(e) => e.stopPropagation()}
         >
-          <input type="text" ref={name} placeholder="Username" />
-          <input type="text" ref={number} placeholder="Phone number" />
-          <input type="email" ref={email} placeholder="Email" />
+          <input type="text" ref={name} placeholder="Username" required />
+          <input type="text" ref={number} placeholder="Phone number" required />
+          <input type="email" ref={email} placeholder="Email" required />
           <button type="submit">Add user</button>
         </form>
       </div>
